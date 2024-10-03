@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signup_screen.dart'; // Import the signup screen
+import 'home_screen.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
@@ -100,6 +101,10 @@ class _SigninScreenState extends State<SigninScreen> {
                     String password = passwordController.text;
                     // You can add validation or signin logic here
                     print("Email: $email, Password: $password");
+                    Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 176, 84, 31), // Button background color
