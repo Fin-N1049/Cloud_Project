@@ -2,7 +2,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-import User from "../models/User"
+const User = require('../models/User');
 const router = express.Router();
 
 // POST /signup - Register a new user

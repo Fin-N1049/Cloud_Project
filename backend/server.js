@@ -1,22 +1,34 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const authRoutes = require('./routes/auth'); // Import authentication routes
+const cors = require('cors');
 
+// Environment configuration
 dotenv.config();
+
+// Initialize express app
 const app = express();
 
-// Middleware to parse JSON
+// Middleware to handle JSON and CORS
 app.use(express.json());
+app.use(cors());
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch((err) => console.log(err));
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected'))
+.catch((err) => console.error(err));
 
-// Use authentication routes
-app.use('/api/auth', authRoutes); // Add this line
-console.log("auth called")
-app.listen(5000, () => {
-    console.log('Server running on port 5000');
-});
+// Import routes
+const contentRoutes = require('./routes/contentRoutes'); // For homepage data
+const authRoutes = require('./routes/auth'); // For signup/signin
+
+// Route Middleware
+app.use('/api/auth', authRoutes); // User Authentication Routes
+app.use('/api/homepage', contentRoutes); // Routes for announcements, events, clubs, and workshops
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
