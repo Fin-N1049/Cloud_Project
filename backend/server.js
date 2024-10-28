@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Import routes
 const contentRoutes = require('./routes/contentRoutes'); // For homepage data
-const authRoutes = require('./routes/auth'); // For signup/signin
+const authRoutes = require('./routes/authRoutes'); // For signup/signin
 
 // Route Middleware
 app.use('/api/auth', authRoutes); // User Authentication Routes

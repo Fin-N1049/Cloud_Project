@@ -15,20 +15,12 @@ const contentSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    time: {
-        type: String,
-        required: true
-    },
-    location: {
+    contents: {
         type: String,
         required: true
     },
     description: {
         type: String,
-        required: true
-    },
-    image: {
-        type: String, // URL of the image
         required: true
     },
     category: {
