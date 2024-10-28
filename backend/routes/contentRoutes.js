@@ -33,7 +33,7 @@ router.get('/:category', async (req, res) => {
 // Add new entry for any category
 router.post('/:category', async (req, res) => {
     const category = req.params.category;
-    const { title, description, date,contents } = req.body;
+    const { title, description,contents } = req.body;
 
     try {
         const newContent = new Content({

@@ -8,7 +8,7 @@ const contentSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['announcement', 'event', 'club', 'workshop'], // Category
+        enum: ['announcements', 'event', 'club'], // Category
         required: true
     },
     description: {
