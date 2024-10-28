@@ -6,28 +6,21 @@ const contentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    type: {
+    category: {
         type: String,
-        enum: ['social', 'tech', 'art', 'sports'], // Example types
-        required: true
-    },
-    date: {
-        type: Date,
-        required: true
-    },
-    contents: {
-        type: String,
+        enum: ['announcement', 'event', 'club', 'workshop'], // Category
         required: true
     },
     description: {
         type: String,
         required: true
     },
-    category: {
+    date: { type: Date, 
+        default: Date.now }, 
+    contents: {
         type: String,
-        enum: ['announcement', 'event', 'club', 'workshop'], // Category
         required: true
-    },
+    }
 });
 
 module.exports = mongoose.model('Content', contentSchema);
